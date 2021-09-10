@@ -16,6 +16,13 @@ spec:
       containers:
         - name: story
           image: adwera/kub-data:v2
+          env:
+            - name: STORY_FOLDER
+              valueFrom:
+                configMapKeyRef:
+                  name: data-store-env
+                  key: folder  
+              # value: 'story'
           volumeMounts:
             - mountPath: /app/story
               name: story-volume
