@@ -11,7 +11,14 @@ spec:
     metadata:
       labels: 
         app: story
+    # pod-specification
     spec:
       containers:
         - name: story
-          image: adwera/kub-data:v1
+          image: adwera/kub-data:v2
+          volumeMounts:
+            - mountPath: /app/story
+              name: story-volume
+      volumes:
+        - name: story-volume
+          emptyDir: {}
